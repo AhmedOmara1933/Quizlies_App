@@ -10,7 +10,8 @@ class QuizQuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuizQuestionPage> {
-  DataModel? datamodel;
+  final PageController controller = PageController();
+
   List<QuizModel> quizCard = [
     QuizModel(question: "Which planet is the closest to the Sun?", answers: {
       "Mercury": true,
@@ -48,45 +49,44 @@ class _QuestionPageState extends State<QuizQuestionPage> {
           "Mercury": true,
           "Venus": false,
           "Earth": false,
-          "Mars":false
+          "Mars": false
         }),
+    QuizModel(question: "Which planet is known as the red planet?", answers: {
+      "Mercury": false,
+      "Venus": false,
+      "Earth": false,
+      "Mars": true
+    }),
     QuizModel(
-        question: "Which planet is known as the red planet?",
-        answers: {
-          "Mercury": false,
-          "Venus": false,
-          "Earth": false,
-          "Mars":true
-        }),
-    QuizModel(
-        question: "Which planet is the only one that can support life as we know it?",
+        question:
+            "Which planet is the only one that can support life as we know it?",
         answers: {
           "Mercury": false,
           "Venus": false,
           "Earth": true,
-          "Mars":false
+          "Mars": false
         }),
     QuizModel(
-        question:"Which planet has rings made of ice and dust particles?",
+        question: "Which planet has rings made of ice and dust particles?",
         answers: {
           "Mercury": false,
           "Saturn": true,
           "Earth": false,
-          "Mars":false
+          "Mars": false
         }),
     QuizModel(
-        question:"Which planet is tilted on its axis by about 98 degrees, making it appear to spin on its side?",
+        question:
+            "Which planet is tilted on its axis by about 98 degrees, making it appear to spin on its side?",
         answers: {
           "Uranus": true,
           "Saturn": false,
           "Earth": false,
-          "Mars":false
+          "Mars": false
         }),
   ];
 
   int pageNumber = 0;
-  bool onPressed=false;
-
+  bool onPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +131,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
         ),
         backgroundColor: const Color(0xff2a175b),
         body: PageView.builder(
-          physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
+          controller: controller,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
@@ -151,7 +152,7 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                       ),
                     ),
                     Text(
-                        quizCard[index].question,
+                      quizCard[index].question,
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -163,8 +164,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                 Expanded(
                   child: Container(
                     margin: const EdgeInsets.symmetric(vertical: 30.0),
-                    decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(30.0)),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.0)),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     height: 250.0,
                     width: double.infinity,
@@ -174,60 +175,55 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                     ),
                   ),
                 ),
-                for(int i=0;i<quizCard[index].answers.length;i++)
-                Container(
-                  margin: const EdgeInsets.only(
-                    bottom: 15.0
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50.0)
-                  ),
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  width: double.infinity,
-                  child: MaterialButton(
-                    height: 55.0,
-                    color:onPressed==true?
-                    quizCard[index].answers.values.toList()[i]==true?
-                    Colors.blue:Colors.deepPurpleAccent:Colors.deepPurpleAccent,
-                    onPressed:(){
-                     // print( quizCard[index].answers.values.toList()[i],);
-                      setState(() {
-                        onPressed=true;
-                      });
-                    },
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(7.0),
-                          margin: EdgeInsets.only(right: 15.0),
-                          decoration: BoxDecoration(
-                            color: Color(0xff34e2b8).withOpacity(0.7),
-                            shape: BoxShape.circle
+                for (int i = 0; i < quizCard[index].answers.length; i++)
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 15.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50.0)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    width: double.infinity,
+                    child: MaterialButton(
+                      height: 55.0,
+                      color: onPressed == true
+                          ? quizCard[index].answers.values.toList()[i] == true
+                              ? Colors.blue
+                              : Colors.deepPurpleAccent
+                          : Colors.deepPurpleAccent,
+                      onPressed: () {
+                        // print( quizCard[index].answers.values.toList()[i],);
+                        setState(() {
+                          onPressed = true;
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(7.0),
+                            margin: const EdgeInsets.only(right: 15.0),
+                            decoration: BoxDecoration(
+                                color: const Color(0xff34e2b8).withOpacity(0.7),
+                                shape: BoxShape.circle),
+                            child: Text(
+                              '0${i + 1}',
+                              style: const TextStyle(
+                                  fontSize: 20.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900),
+                            ),
                           ),
-                          child: Text(
-                            '0${i+1}',
-                            style: const TextStyle(
-                                fontSize: 20.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900),
-                          ),
-                        ),
-                        Text(
+                          Text(
                             quizCard[index].answers.keys.toList()[i],
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize:25.0,
-                            color: Colors.white
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 25.0,
+                                color: Colors.white),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
                 Container(
-                  margin: EdgeInsets.only(
-                    top: 20.0
-                  ),
+                  margin: const EdgeInsets.only(top: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -238,10 +234,15 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                             borderRadius: BorderRadius.circular(10.0)),
                         clipBehavior: Clip.antiAlias,
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.previousPage(
+                                duration: const Duration(microseconds: 4000),
+                                curve: Curves.bounceIn);
+                          },
                           child: const Text(
                             'Previous',
-                            style: TextStyle(color: Colors.white, fontSize: 17.0),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 17.0),
                           ),
                         ),
                       ),
@@ -253,10 +254,19 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.nextPage(
+                                duration: const Duration(microseconds: 4000),
+                                curve: Curves.bounceIn);
+
+                            setState(() {
+                              onPressed = false;
+                            });
+                          },
                           child: const Text(
                             'Next',
-                            style: TextStyle(color: Colors.white, fontSize: 17.0),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 17.0),
                           ),
                         ),
                       ),

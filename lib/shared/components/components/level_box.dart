@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../modules/3.quiz_question.dart';
+import 'package:quizzlies_app/modules/3.quiz_question.dart';
 
 class DefaultLevel extends StatelessWidget {
   String? number;
