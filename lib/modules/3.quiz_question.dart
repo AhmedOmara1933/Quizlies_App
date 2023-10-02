@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/data_model_with_map.dart';
+
 import '../models/quiz_model.dart';
+import '4.quiz_results.dart';
 
 class QuizQuestionPage extends StatefulWidget {
   const QuizQuestionPage({super.key});
@@ -86,6 +87,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
   ];
 
   int pageNumber = 0;
+  int score = 0;
+  int questionTrue = 0;
   bool onPressed = false;
 
   @override
@@ -190,7 +193,12 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                               : Colors.deepPurpleAccent
                           : Colors.deepPurpleAccent,
                       onPressed: () {
-                        // print( quizCard[index].answers.values.toList()[i],);
+                        if (quizCard[index].answers.values.toList()[i] ==
+                            true) {
+                          score += 10;
+                          questionTrue++;
+                        }
+
                         setState(() {
                           onPressed = true;
                         });
@@ -255,18 +263,26 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                         clipBehavior: Clip.antiAlias,
                         child: MaterialButton(
                           onPressed: () {
+                            if (index == quizCard.length - 1) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => QuzzielesResultsPage(
+                                        score: score,
+                                        questionTrue: questionTrue),
+                                  ));
+                            }
                             controller.nextPage(
                                 duration: const Duration(microseconds: 4000),
                                 curve: Curves.bounceIn);
-
                             setState(() {
                               onPressed = false;
                             });
                           },
-                          child: const Text(
-                            'Next',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 17.0),
+                          child: Text(
+                            index == quizCard.length - 1 ? 'Finish' : 'Next',
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 17.0),
                           ),
                         ),
                       ),

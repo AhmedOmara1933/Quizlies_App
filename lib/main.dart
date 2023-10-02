@@ -11,18 +11,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Color(0xff)
-          ),
-          backgroundColor: Color(0xff),
-          elevation: 0.0
-        )
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Color(0xff)
+            ),
+            backgroundColor: Color(0xff),
+            elevation: 0.0
+          )
+        ),
+        home: QuizzlesHomePage(),
       ),
-      home: QuizQuestionPage(),
     );
   }
 }

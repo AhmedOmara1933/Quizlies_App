@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quizzlies_app/shared/components/components/button.dart';
-import '../../shared/components/components/components.dart';
 import '1.quiz_homePage.dart';
 import '2.quiz_levels.dart';
 
 class QuzzielesResultsPage extends StatelessWidget {
-  const QuzzielesResultsPage({Key? key}) : super(key: key);
+  final int score;
+  final int questionTrue;
+  const QuzzielesResultsPage({super.key,required this.score, required this.questionTrue});
 
   @override
   Widget build(BuildContext context) {
@@ -60,26 +61,26 @@ class QuzzielesResultsPage extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 30.0, right: 30.0, bottom: 50.0),
+           Padding(
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 50.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
                   children: [
-                    Text(
+                    const Text(
                       'Total correct answers:',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
                     Text(
-                      '6 out of 10 Questions',
-                      style: TextStyle(
+                      '$questionTrue out of 10 Questions',
+                      style: const TextStyle(
                           color: Color(0xff34e2b8),
                           fontWeight: FontWeight.bold,
                           fontSize: 20.0),
@@ -102,10 +103,10 @@ class QuzzielesResultsPage extends StatelessWidget {
                 color:const Color(0xff624ccc),
                 borderRadius: BorderRadius.circular(40.0)
               ),
-              child: const Column(
+              child:  Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Your final score is',
                     style: TextStyle(
                       fontSize: 35.0,
@@ -113,15 +114,15 @@ class QuzzielesResultsPage extends StatelessWidget {
                       fontWeight: FontWeight.bold
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 25.0,
                   ),
                   CircleAvatar(
-                    backgroundColor: Color(0xfffaba2a),
+                    backgroundColor: const Color(0xfffaba2a),
                     radius: 100.0,
                     child: Text(
-                      '60',
-                      style: TextStyle(
+                      '$score',
+                      style: const TextStyle(
                         fontSize: 70.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white
