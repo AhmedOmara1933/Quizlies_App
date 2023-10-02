@@ -5,8 +5,7 @@ import '2.quiz_levels.dart';
 
 class QuzzielesResultsPage extends StatelessWidget {
   final int score;
-  final int questionTrue;
-  const QuzzielesResultsPage({super.key,required this.score, required this.questionTrue});
+  const QuzzielesResultsPage({super.key,required this.score});
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +78,7 @@ class QuzzielesResultsPage extends StatelessWidget {
                       height: 10.0,
                     ),
                     Text(
-                      '$questionTrue out of 10 Questions',
+                      '$score out of 10 Questions',
                       style: const TextStyle(
                           color: Color(0xff34e2b8),
                           fontWeight: FontWeight.bold,
@@ -121,7 +120,7 @@ class QuzzielesResultsPage extends StatelessWidget {
                     backgroundColor: const Color(0xfffaba2a),
                     radius: 100.0,
                     child: Text(
-                      '$score',
+                      '${score*10}',
                       style: const TextStyle(
                         fontSize: 70.0,
                         fontWeight: FontWeight.bold,

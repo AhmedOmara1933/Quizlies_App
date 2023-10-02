@@ -88,7 +88,6 @@ class _QuestionPageState extends State<QuizQuestionPage> {
 
   int pageNumber = 0;
   int score = 0;
-  int questionTrue = 0;
   bool onPressed = false;
 
   @override
@@ -195,10 +194,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                       onPressed: () {
                         if (quizCard[index].answers.values.toList()[i] ==
                             true) {
-                          score += 10;
-                          questionTrue++;
+                          score++;
                         }
-
                         setState(() {
                           onPressed = true;
                         });
@@ -235,6 +232,7 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      //Previous
                       Container(
                         width: 120.0,
                         decoration: BoxDecoration(
@@ -254,6 +252,7 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                           ),
                         ),
                       ),
+                      //Next
                       Container(
                         width: 120.0,
                         decoration: BoxDecoration(
@@ -268,8 +267,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => QuzzielesResultsPage(
-                                        score: score,
-                                        questionTrue: questionTrue),
+                                      score: score,
+                                    ),
                                   ));
                             }
                             controller.nextPage(
