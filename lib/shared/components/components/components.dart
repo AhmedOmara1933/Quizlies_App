@@ -34,6 +34,7 @@ class DefaultLevel extends StatelessWidget {
             ),
             onRatingUpdate: (newRating) {
               rating = newRating;
+
             },
           ),
           const SizedBox(

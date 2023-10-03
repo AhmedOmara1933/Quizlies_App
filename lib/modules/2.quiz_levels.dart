@@ -3,7 +3,7 @@ import '../shared/components/components/components.dart';
 import '1.quiz_homePage.dart';
 
 class QuzzielesLevel extends StatelessWidget {
-  const QuzzielesLevel({Key? key}) : super(key: key);
+  const QuzzielesLevel({ Key? key}) ;
 
   @override
   Widget build(BuildContext context) {

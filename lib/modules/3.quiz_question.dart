@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/quiz_model.dart';
 import '4.quiz_results.dart';
 
@@ -11,8 +10,7 @@ class QuizQuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuizQuestionPage> {
-  final PageController controller = PageController();
-
+  var controller = PageController();
   List<QuizModel> quizCard = [
     QuizModel(question: "Which planet is the closest to the Sun?", answers: {
       "Mercury": true,
@@ -85,10 +83,10 @@ class _QuestionPageState extends State<QuizQuestionPage> {
           "Mars": false
         }),
   ];
-
   int pageNumber = 0;
   int score = 0;
   bool onPressed = false;
+  int ?selectedAnswerIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -192,8 +190,8 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                               : Colors.deepPurpleAccent
                           : Colors.deepPurpleAccent,
                       onPressed: () {
-                        if (quizCard[index].answers.values.toList()[i] ==
-                            true) {
+                        if (
+                        quizCard[index].answers.values.toList()[i] == true) {
                           score++;
                         }
                         setState(() {
@@ -262,22 +260,22 @@ class _QuestionPageState extends State<QuizQuestionPage> {
                         clipBehavior: Clip.antiAlias,
                         child: MaterialButton(
                           onPressed: () {
-                            if (index == quizCard.length - 1) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => QuzzielesResultsPage(
-                                      score: score,
-                                    ),
-                                  ));
-                            }
-                            controller.nextPage(
-                                duration: const Duration(microseconds: 4000),
-                                curve: Curves.bounceIn);
-                            setState(() {
-                              onPressed = false;
-                            });
-                          },
+                              if (index == quizCard.length - 1) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => QuzzielesResultsPage(
+                                        score: score,
+                                      ),
+                                    ));
+                              }
+                              setState(() {
+                                onPressed = false;
+                              });
+                              controller.nextPage(
+                                  duration: const Duration(microseconds: 4000),
+                                  curve: Curves.bounceIn);
+                            },
                           child: Text(
                             index == quizCard.length - 1 ? 'Finish' : 'Next',
                             style: const TextStyle(

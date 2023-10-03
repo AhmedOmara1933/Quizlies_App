@@ -141,7 +141,7 @@ class QuzzielesResultsPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  const QuizzlesHomePage(),
+                    builder: (context) =>   QuzzielesLevel(),
                   )
               );
             },

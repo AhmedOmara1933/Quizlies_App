@@ -52,7 +52,7 @@ class QuizzlesHomePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const QuzzielesLevel(),
+                      builder: (context) =>  QuzzielesLevel(),
                     ));
               },
             ),
