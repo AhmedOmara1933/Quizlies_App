@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quizzlies_app/shared/components/components/button.dart';
-import '1.quiz_homePage.dart';
 import '2.quiz_levels.dart';
 
 class QuzzielesResultsPage extends StatelessWidget {
@@ -10,56 +9,21 @@ class QuzzielesResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2a175b),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(right: 70.0),
-                  decoration: BoxDecoration(
-                      color: const Color(0xff341d7c),
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xff1e1046).withOpacity(0.5),
-                          // Shadow color
-                          spreadRadius: 5.0,
-                          // Spread radius
-                          blurRadius: 7,
-                          // Blur radius
-                          offset: const Offset(0, 3),
-                        )
-                      ]),
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_rounded,
-                      color: Colors.white,
-                      size: 25.0,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>  const QuzzielesLevel(),
-                          )
-                      );
-                    },
-                  ),
-                ),
-                const Text(
-                  'Results',
-                  style: TextStyle(
-                      color: Color(0xff34e2b8),
-                      fontSize: 27.0,
-                      fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            'Results',
+            style: TextStyle(
+              color: Color(0xff34e2b8),
+              fontSize: 27.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
+
+        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
            Padding(
             padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 50.0),
             child: Row(
@@ -78,7 +42,7 @@ class QuzzielesResultsPage extends StatelessWidget {
                       height: 10.0,
                     ),
                     Text(
-                      '$score out of 10 Questions',
+                      '$score out of 9 Questions',
                       style: const TextStyle(
                           color: Color(0xff34e2b8),
                           fontWeight: FontWeight.bold,

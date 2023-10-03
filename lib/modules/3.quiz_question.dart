@@ -129,7 +129,6 @@ class _QuestionPageState extends State<QuizQuestionPage> {
             )
           ],
         ),
-        backgroundColor: const Color(0xff2a175b),
         body: PageView.builder(
           physics: const NeverScrollableScrollPhysics(),
           controller: controller,
@@ -295,6 +294,7 @@ class _QuestionPageState extends State<QuizQuestionPage> {
               pageNumber = value;
             });
           },
-        ));
+        )
+    );
   }
 }

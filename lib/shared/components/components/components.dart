@@ -27,7 +27,7 @@ class DefaultLevel extends StatelessWidget {
             ignoreGestures: true,
             initialRating: rating,
             itemCount: 3,
-            itemSize: 40.0,
+            itemSize:40.0,
             itemBuilder: (context, _) => const Icon(
               Icons.star,
               color: Colors.amber,
