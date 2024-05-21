@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'modules/1.quiz_homePage.dart';
+
+import 'modules/1.quiz_introPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor:const Color(0xff2a175b),
           appBarTheme: const AppBarTheme(
-              backgroundColor: Color(0xff2a175b),
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor:const Color(0xff2a175b),
-          ),
-              elevation: 0.0,
-          )
-      ),
-      home: const QuizzlesHomePage(),
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.white,
+            ),
+            elevation: 0.0,
+          )),
+      home: const QuizzlesIntroPage(),
     );
   }
 }

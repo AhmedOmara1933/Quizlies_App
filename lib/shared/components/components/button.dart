@@ -48,7 +48,7 @@ class DefaultButton extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(right: 30.0),
               child: Text(
-                '$text',
+                text,
                 style: TextStyle(color: backgroundText, fontSize: 28.0),
               ),
             ),

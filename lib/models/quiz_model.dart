@@ -4,3 +4,4 @@ class QuizModel {
 
   QuizModel({required this.question, required this.answers});
 }
+

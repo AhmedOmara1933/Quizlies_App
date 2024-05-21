@@ -5,8 +5,9 @@ import '../../../modules/3.quiz_question.dart';
 class DefaultLevel extends StatelessWidget {
   String? number;
   Color? levelcolor;
+  VoidCallback onTap;
 
-  DefaultLevel({this.number, this.levelcolor});
+  DefaultLevel({this.number, required this.onTap,this.levelcolor});
 
   double rating = 0.0;
 
@@ -14,13 +15,7 @@ class DefaultLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => QuizQuestionPage(),
-            ));
-      },
+      onTap: onTap,
       child: Column(
         children: [
           RatingBar.builder(
